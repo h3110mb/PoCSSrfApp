@@ -1,10 +1,17 @@
 # PoCSSrfApp
-Note:Website was using Appspace version 6.2.4
+
+Server-Side Request Forgery (SSRF) refers to an attack, wherein an attacker can send a crafted request from a vulnerable web application. SSRF is mainly used to target internal systems behind WAF (web application firewall), that are unreachable to an attacker from the external network. Additionally, it’s also possible for an attacker to mark SSRF, for accessing services from the same server that is listening on the loopback interface address called (127.0.0.1).
+
+Severity:HIGH
+
 Steps to reproduce:
 1.Visit: subdomain.target.com/api/v1/core/proxy/jsonprequest?objresponse=false&websiteproxy=true&escapestring=false&url=?
 2.Change the Value of Url= to your Hosted Server (I change it to my burp Collaborator)
 3.Forward the request and check for log and response.
 4.In my case I was able to get collaborator response.
+
+Impact:
+By this attack, an attacker can gather information about ports, IP addresses, Remote Code Execution (RCE), and can also discover the IP addresses of servers running behind a reverse proxy, etc.
 
 
 
@@ -42,3 +49,9 @@ Connection: close
 Content-Length: 61
 
 <html><body>dlgnon6ksjta2ya1tg7gq2zjlgmgigjflgz</body></html>
+
+
+
+
+
+
